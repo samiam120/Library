@@ -27,7 +27,6 @@ function displayBooks(book) {
   const removeBtn = document.createElement("button");
   removeBtn.innerText = "Remove Book";
 
-
   cardAuthor.textContent = book.author;
   cardTitle.textContent = book.title;
   cardPages.textContent = book.numPages;
@@ -52,17 +51,21 @@ function addBookToLibrary(book) {
 }
 
 addBtn.addEventListener("click", () => {
-  const newBook = new Book(
-    author.value,
-    title.value,
-    numPages.value,
-    haveRead.checked
-  );
-  addBookToLibrary(newBook);
-  displayBooks(myLibrary[myLibrary.length - 1]);
-  author.value = "";
-  title.value = "";
-  numPages.value = "";
-  haveRead.checked = false;
-  console.log(myLibrary);
+  if (author.value === "" || (title.value === "") | (numPages.value === "")) {
+    alert("fill out required fields");
+  } else {
+    const newBook = new Book(
+      author.value,
+      title.value,
+      numPages.value,
+      haveRead.checked
+    );
+    addBookToLibrary(newBook);
+    displayBooks(myLibrary[myLibrary.length - 1]);
+    author.value = "";
+    title.value = "";
+    numPages.value = "";
+    haveRead.checked = false;
+    console.log(myLibrary);
+  }
 });
