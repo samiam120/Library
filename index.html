@@ -7,37 +7,37 @@
     <title>Library</title>
   </head>
   <body>
-    <form action="">
-      <fieldset>
-        <legend>Add to your library!</legend>
-        <label for="author"
-          >Author
-          <input type="text" name="author" id="author" required />
-        </label>
-
-        <label for="title">
-          Title
-          <input type="text" name="title" id="title" required />
-        </label>
-        <label for="numPages"
-          >Number of Pages
-          <input
-            type="number"
-            name="number_of_pages"
-            id="numPages"
-            min="1"
-            max="2000"
-            required
-          />
-        </label>
-
-        <label for="have-read"
-          >have you read
-          <input type="checkbox" id="have-read" />
-        </label>
-      </fieldset>
-    </form>
-    <button type="submit" class="add">Add to Library</button>
+    <div class="container">
+      <form action="">
+        <fieldset>
+          <legend>Add to your library!</legend>
+          <label for="author"
+            >Author
+            <input type="text" name="author" id="author" required />
+          </label>
+          <label for="title">
+            Title
+            <input type="text" name="title" id="title" required />
+          </label>
+          <label for="numPages"
+            >Number of Pages
+            <input
+              type="number"
+              name="number_of_pages"
+              id="numPages"
+              min="1"
+              max="2000"
+              required
+            />
+          </label>
+          <label for="have-read"
+            >have you read
+            <input type="checkbox" id="have-read" />
+          </label>
+          <button type="submit" class="add">Add to Library</button>
+        </fieldset>
+      </form>
+    </div>
 
     <div class="showcase"></div>
     <script src="script.js"></script>
