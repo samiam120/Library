@@ -24,11 +24,18 @@ function displayBooks(book) {
   const cardTitle = document.createElement("p");
   const cardPages = document.createElement("p");
   const cardHaveRead = document.createElement("p");
+  const removeBtn = document.createElement("button");
+  removeBtn.innerText = "Remove Book";
+
 
   cardAuthor.textContent = book.author;
   cardTitle.textContent = book.title;
   cardPages.textContent = book.numPages;
-  cardHaveRead.textContent = book.cardHaveRead
+  cardHaveRead.textContent = book.cardHaveRead;
+
+  removeBtn.addEventListener("click", () => {
+    card.remove();
+  });
 
   card.appendChild(cardAuthor);
   card.appendChild(cardTitle);
@@ -36,6 +43,7 @@ function displayBooks(book) {
   card.appendChild(cardHaveRead);
 
   showcase.appendChild(card);
+  card.appendChild(removeBtn);
 }
 
 //method to add books
