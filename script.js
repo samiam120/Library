@@ -16,6 +16,10 @@ function Book(author, title, numPages, haveRead) {
   this.haveRead = haveRead;
 }
 
+Book.prototype.toggleReadStatus = function () {
+  this.haveRead = !this.haveRead;
+};
+
 function displayBooks(book) {
   const card = document.createElement("div");
   card.classList.add("card");
@@ -25,15 +29,25 @@ function displayBooks(book) {
   const cardPages = document.createElement("p");
   const cardHaveRead = document.createElement("p");
   const removeBtn = document.createElement("button");
-  removeBtn.innerText = "Remove Book";
+  const toggleReadBtn = document.createElement("button");
 
-  cardAuthor.textContent = book.author;
-  cardTitle.textContent = book.title;
-  cardPages.textContent = book.numPages;
-  cardHaveRead.textContent = book.cardHaveRead;
+  cardAuthor.textContent = `Author: ${book.author}`;
+  cardTitle.textContent = `Title: ${book.title}`;
+  cardPages.textContent = `Pages: ${book.numPages}`;
+  cardHaveRead.textContent = book.haveRead ? "Read" : "Not Read";
+
+  toggleReadBtn.textContent = "Read Status";
+  removeBtn.textContent = "Remove Book";
+
+  toggleReadBtn.addEventListener("click", () => {
+    book.toggleReadStatus();
+    cardHaveRead.textContent = book.haveRead ? "Read" : "Not Read";
+  });
 
   removeBtn.addEventListener("click", () => {
     card.remove();
+    const index = myLibrary.indexOf(book);
+    myLibrary.splice(index, 1);
   });
 
   card.appendChild(cardAuthor);
@@ -43,6 +57,7 @@ function displayBooks(book) {
 
   showcase.appendChild(card);
   card.appendChild(removeBtn);
+  card.appendChild(toggleReadBtn);
 }
 
 //method to add books
@@ -66,6 +81,5 @@ addBtn.addEventListener("click", () => {
     title.value = "";
     numPages.value = "";
     haveRead.checked = false;
-    console.log(myLibrary);
   }
 });
